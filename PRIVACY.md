@@ -1,5 +1,7 @@
 # Privacy Policy
 
+[English](./PRIVACY.md) | [简体中文](./PRIVACY.zh-CN.md)
+
 EasyCurl is a local-first Chrome/Edge extension for importing, editing, and sending HTTP requests from copied `curl` commands.
 
 ## Data Collection
@@ -40,4 +42,3 @@ EasyCurl requests these browser permissions:
 ## Contact
 
 For privacy or security questions, open an issue in the GitHub repository.
-

@@ -1,5 +1,7 @@
 # EasyCurl
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 EasyCurl is a lightweight Chrome/Edge extension for turning copied `curl` commands into editable API requests. It is built for the moment when a full API client feels too slow: import curl, tweak headers/query/body, send, inspect the response, and copy the result.
 
 ## Why EasyCurl
@@ -37,7 +39,7 @@ EasyCurl is designed as a local-first debugging tool.
 - EasyCurl does not require an account.
 - EasyCurl does not provide cloud sync.
 
-See [PRIVACY.md](./PRIVACY.md) for the full privacy note.
+See [PRIVACY.md](./PRIVACY.md) for the full privacy note. A Chinese version is available at [PRIVACY.zh-CN.md](./PRIVACY.zh-CN.md).
 
 ## Install Locally
 
@@ -134,4 +136,3 @@ When ready to publish:
 - Request collections.
 - Better curl option coverage.
 - Optional local proxy for advanced TLS/proxy/internal-network cases.
-

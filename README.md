@@ -4,6 +4,9 @@
 
 EasyCurl is a lightweight Chrome/Edge extension for turning copied `curl` commands into editable API requests. It is built for the moment when a full API client feels too slow: import curl, tweak headers/query/body, send, inspect the response, and copy the result.
 
+<img width="1280" height="860" alt="image" src="https://github.com/user-attachments/assets/00debc3f-b554-4434-af8e-c7eeab95353d" />
+
+
 ## Why EasyCurl
 
 Tools like Apifox, Postman, and browser docs are powerful, but they can feel heavy when you only need to quickly replay one request. EasyCurl keeps the workflow small:

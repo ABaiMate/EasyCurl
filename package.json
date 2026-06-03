@@ -1,0 +1,19 @@
+{
+  "name": "easycurl",
+  "version": "0.1.0",
+  "description": "A lightweight Chrome/Edge extension that turns copied curl commands into editable API requests.",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "chrome-extension",
+    "edge-extension",
+    "curl",
+    "api-client",
+    "http-client",
+    "developer-tools",
+    "manifest-v3"
+  ],
+  "scripts": {
+    "test": "node tests/curlParser.test.js && node tests/privacy.test.js"
+  }
+}

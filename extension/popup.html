@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EasyCurl</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>EasyCurl</h1>
+          <p id="statusText">Paste a curl command or edit the request directly.</p>
+        </div>
+        <div class="actions">
+          <button id="toggleImportBtn" class="primary" type="button" title="Paste or read a curl command and convert it into a request">Import curl</button>
+          <button id="copyCurlBtn" type="button" title="Copy current request as curl">Copy curl</button>
+          <button id="copyResponseBtn" type="button" title="Copy the latest response body" disabled>Copy response</button>
+          <button id="copyReportBtn" type="button" title="Copy curl, status, headers, and response body" disabled>Copy report</button>
+          <button id="sendBtn" class="send-action" type="button" title="Send request">Send</button>
+        </div>
+      </header>
+
+      <section id="importPanel" class="import-panel" hidden>
+        <div class="import-head">
+          <label for="curlInput">Curl command</label>
+          <div class="import-actions">
+            <button id="readClipboardBtn" type="button" title="Read curl from clipboard and convert it">Read clipboard</button>
+            <button id="applyCurlBtn" class="primary" type="button" title="Convert pasted curl into an editable request">Use pasted curl</button>
+          </div>
+        </div>
+        <textarea id="curlInput" class="curl-input" spellcheck="false" placeholder="curl 'https://api.example.com/resource' \
+  -H 'Authorization: Bearer token' \
+  --data-raw '{&quot;name&quot;:&quot;EasyCurl&quot;}'"></textarea>
+      </section>
+
+      <section id="warnings" class="warnings" hidden></section>
+
+      <section class="workspace">
+        <form id="requestForm" class="request-panel">
+          <div class="url-row">
+            <select id="methodInput" aria-label="HTTP method">
+              <option>GET</option>
+              <option>POST</option>
+              <option>PUT</option>
+              <option>PATCH</option>
+              <option>DELETE</option>
+              <option>HEAD</option>
+              <option>OPTIONS</option>
+            </select>
+            <input id="urlInput" type="url" placeholder="https://api.example.com/resource" aria-label="Request URL">
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Request editor tabs">
+            <button class="tab active" type="button" data-tab="headers">Headers</button>
+            <button class="tab" type="button" data-tab="query">Query</button>
+            <button class="tab" type="button" data-tab="body">Body</button>
+            <button class="tab" type="button" data-tab="auth">Auth</button>
+          </div>
+
+          <section class="tab-panel active" data-panel="headers">
+            <div class="kv-head">
+              <label>Headers</label>
+              <button id="addHeaderBtn" class="ghost-button" type="button">Add header</button>
+            </div>
+            <div id="headersEditor" class="kv-editor" aria-label="Headers editor"></div>
+          </section>
+
+          <section class="tab-panel" data-panel="query">
+            <div class="kv-head">
+              <label>Query parameters</label>
+              <button id="addQueryBtn" class="ghost-button" type="button">Add query</button>
+            </div>
+            <div id="queryEditor" class="kv-editor" aria-label="Query parameters editor"></div>
+          </section>
+
+          <section class="tab-panel" data-panel="body">
+            <div class="field-row">
+              <label for="bodyTypeInput">Body</label>
+              <div class="body-tools">
+                <button id="formatJsonBtn" class="ghost-button" type="button">Format JSON</button>
+                <select id="bodyTypeInput" aria-label="Body type">
+                  <option value="none">none</option>
+                  <option value="json">json</option>
+                  <option value="form-urlencoded">x-www-form-urlencoded</option>
+                  <option value="form-data">form-data</option>
+                  <option value="raw">raw</option>
+                </select>
+              </div>
+            </div>
+            <textarea id="bodyInput" class="body-editor" spellcheck="false" placeholder="{&#10;  &quot;name&quot;: &quot;EasyCurl&quot;&#10;}"></textarea>
+          </section>
+
+          <section class="tab-panel" data-panel="auth">
+            <div class="field-row">
+              <label for="authTypeInput">Auth</label>
+              <select id="authTypeInput" aria-label="Auth type">
+                <option value="none">none</option>
+                <option value="basic">basic</option>
+              </select>
+            </div>
+            <div class="auth-grid">
+              <input id="authUserInput" placeholder="Username" autocomplete="off">
+              <input id="authPasswordInput" placeholder="Password" type="password" autocomplete="off">
+            </div>
+            <label class="check-row">
+              <input id="saveSensitiveInput" type="checkbox">
+              Save sensitive values in history
+            </label>
+          </section>
+        </form>
+
+        <section class="response-panel">
+          <div class="response-meta">
+            <span id="responseStatus" class="status-pill">Idle</span>
+            <span id="responseTime">0 ms</span>
+          </div>
+          <div class="response-tabs">
+            <button class="response-tab active" type="button" data-response-tab="body">Body</button>
+            <button class="response-tab" type="button" data-response-tab="headers">Headers</button>
+          </div>
+          <pre id="responseBody" class="response-view">No response yet.</pre>
+          <pre id="responseHeaders" class="response-view" hidden></pre>
+        </section>
+      </section>
+
+      <section class="library">
+        <div class="library-header">
+          <h2>History</h2>
+          <button id="clearHistoryBtn" type="button" title="Clear local request history">Clear</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

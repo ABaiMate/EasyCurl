@@ -4,6 +4,9 @@
 
 EasyCurl 是一个轻量级 Chrome/Edge 扩展，可以把复制来的 `curl` 命令转换成可编辑的 API 请求。它适合临时调试接口时使用：导入 curl，修改 Headers、Query、Body，发送请求，查看响应，再复制结果。
 
+<img width="1280" height="860" alt="image" src="https://github.com/user-attachments/assets/a35b73fd-b16b-4d58-ad9a-195fa7569655" />
+
+
 ## 为什么做 EasyCurl
 
 Apifox、Postman 和各种 API 文档工具都很强，但当你只是想快速重放一个请求时，它们有时会显得太重。EasyCurl 把流程压到最短：
